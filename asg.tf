@@ -1,4 +1,5 @@
-resource "aws_autoscaling_group" "bar" {
+resource "aws_autoscaling_group" "asg" {
+  name                = "${var.COMPONENT}-${var.ENV}"
   desired_capacity    = var.DESIRED_CAPACITY
   max_size            = var.MAX_SIZE
   min_size            = var.MIN_SIZE
