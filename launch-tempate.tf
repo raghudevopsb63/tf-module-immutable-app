@@ -3,7 +3,7 @@ resource "aws_launch_template" "launch-template" {
   image_id               = data.aws_ami.ami.id
   instance_type          = var.INSTANCE_TYPE
   vpc_security_group_ids = [aws_security_group.allow_app.id]
-  //user_data = filebase64("${path.module}/example.sh")
+  user_data              = filebase64("${path.module}/${var.ENV}-userdata.sh")
 
   instance_market_options {
     market_type = "spot"
