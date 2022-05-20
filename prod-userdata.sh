@@ -9,7 +9,7 @@ fi
 
 COMPONENT=$(ls /home/roboshop/)
 GET_PASS() {
-  aws secretsmanager get-secret-value --secret-id prod/roboshop/secrets | jq .SecretString | sed -e 's|\\||g' -e 's|^"||' -e 's|"$||' | jq .${1}
+  aws secretsmanager get-secret-value --secret-id prod/roboshop/secrets | jq .SecretString | sed -e 's|\\||g' -e 's|^"||' -e 's|"$||' | jq .${1} | xargs
 }
 DOCUMENTDB_MASTER_USERNAME=$(GET_PASS DOCUMENTDB_MASTER_USERNAME)
 DOCUMENTDB_MASTER_PASSWORD=$(GET_PASS DOCUMENTDB_MASTER_PASSWORD)
